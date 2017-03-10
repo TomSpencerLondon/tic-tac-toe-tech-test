@@ -10,6 +10,7 @@ class TicTacToe
   def play(slot=0)
     raise "Slot in use" if slot_in_use?(slot)
     @board[slot] = @player
+    raise "Game over" if no_slots_available?
     next_player
   end
 
@@ -21,5 +22,9 @@ class TicTacToe
 
   def slot_in_use?(slot)
     @board[slot] != nil
+  end
+
+  def no_slots_available?
+    !@board.include? nil
   end
 end

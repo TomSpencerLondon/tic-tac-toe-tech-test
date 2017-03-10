@@ -27,9 +27,14 @@ describe TicTacToe do
         expect(tictactoe.board).to eq([true, nil, nil, false, nil, nil, nil, nil, nil])
       end
 
-      it "should not allow a player to play in a used slot" do
+      it "should raise an error if a player tries to play in a used slot" do
         tictactoe.play(0)
         expect{tictactoe.play(0)}.to raise_error("Slot in use")
+      end
+
+      it "should raise an error if there are no more slots available" do
+        (0..7).each {|i| tictactoe.play(i)}
+        expect{tictactoe.play(8)}.to raise_error("Game over")
       end
     end
   end
