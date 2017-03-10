@@ -1,10 +1,12 @@
+require_relative 'board'
+
 class TicTacToe
   WinningLines = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 
   attr_reader :board
 
-  def initialize()
-    @board = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
+  def initialize(board=Board.new)
+    @board = board.grid
     @player = true
   end
 
@@ -34,7 +36,7 @@ class TicTacToe
   def check_winning_line
     WinningLines.each do |winner|
       line_win = 0
-      winner.each {|slot| line_win+=1 if @board[slot]==@player}
+      winner.each {|slot| line_win += 1 if @board[slot]==@player}
       return who_won if line_win == 3
     end
     false
