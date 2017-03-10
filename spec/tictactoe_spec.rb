@@ -37,6 +37,36 @@ describe TicTacToe do
         expect{tictactoe.play(8)}.to raise_error("Game over")
       end
     end
+
+    describe "Game winning" do
+      it "Player 1 can win horizontally" do
+        data = [0,3,1,4]
+        data.each {|i| tictactoe.play(i)}
+        expect(tictactoe.play(2)).to eq("Winner")
+        expect(tictactoe.board).to eq([true, true, true, false, false, nil, nil, nil, nil])
+      end
+
+      it "Player 2 can win vertically" do
+        data = [0,1,2,4,3]
+        data.each {|i| tictactoe.play(i)}
+        expect(tictactoe.play(7)).to eq("Winner")
+        expect(tictactoe.board).to eq([true, false, true, true, false, nil, nil, false, nil])
+      end
+
+      it "Player 1 can win diagonally" do
+        data = [0,2,4,5]
+        data.each {|i| tictactoe.play(i)}
+        expect(tictactoe.play(8)).to eq("Winner")
+        expect(tictactoe.board).to eq([true, nil, false, nil, true, false, nil, nil, true])
+      end
+
+      it "Player 2 can win diagonally" do
+        data = [1,2,5,4,7]
+        data.each {|i| tictactoe.play(i)}
+        expect(tictactoe.play(6)).to eq("Winner")
+        expect(tictactoe.board).to eq([nil, true, false, nil, false, true, false, true, nil])
+      end
+    end
   end
 
 end
