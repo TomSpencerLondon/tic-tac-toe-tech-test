@@ -11,8 +11,8 @@ class TicTacToe
   def play(slot=0)
     raise "Slot in use" if slot_in_use?(slot)
     @board[slot] = @player
-    raise "Game over" if no_slots_available?
-    return "Winner" if check_winning_line
+    raise "Game draw!" if no_slots_available?
+    return @winner_text if check_winning_line
     next_player
   end
 
@@ -34,9 +34,15 @@ class TicTacToe
     WinningLines.each do |winner|
       line_win = 0
       winner.map {|slot| line_win+=1 if @board[slot]==@player}
-      return true if line_win == 3
+      return who_won if line_win == 3
     end
     false
+  end
+
+  def who_won
+    @winner_text = "Player "
+    @winner_text += @player ? "X" : "O"
+    @winner_text += " won!"
   end
 
 end
