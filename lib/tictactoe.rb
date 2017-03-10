@@ -34,7 +34,7 @@ class TicTacToe
   def check_winning_line
     WinningLines.each do |winner|
       line_win = 0
-      winner.map {|slot| line_win+=1 if @board[slot]==@player}
+      winner.each {|slot| line_win+=1 if @board[slot]==@player}
       return who_won if line_win == 3
     end
     false
