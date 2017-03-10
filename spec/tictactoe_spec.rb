@@ -95,6 +95,16 @@ describe TicTacToe do
         expect(tictactoe.board).to eq([nil, true, false, nil, false, true, false, true, nil])
       end
     end
+
+    describe "Invailid input" do
+      it "should not be able to select a slot less than 0" do
+        expect{tictactoe.play(-1)}.to raise_error("Slot out of range")
+      end
+
+      it "should not be able to select a slot greater than 8" do
+        expect{tictactoe.play(9)}.to raise_error("Slot out of range")
+      end
+    end
   end
 
 end
