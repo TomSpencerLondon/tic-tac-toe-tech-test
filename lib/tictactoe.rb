@@ -11,7 +11,7 @@ class TicTacToe
   def play(slot=0)
     raise "Slot in use" if slot_in_use?(slot)
     @board[slot] = @player
-    raise "Game draw!" if no_slots_available?
+    return "Game draw!" if no_slots_available?
     return @winner_text if check_winning_line
     next_player
   end
