@@ -6,4 +6,7 @@ class TicTacToe
     @board = [nil, nil, nil, nil, nil, nil, nil, nil, nil]
   end
 
+  def play(slot=0)
+    @board[slot] = true
+  end
 end
