@@ -1,5 +1,5 @@
 # Tic-Tac-Toe Tech Test
-#### Technologies: 
+#### Technologies: Ruby, Rspec
 ### [Makers Academy] (http://www.makersacademy.com) - Week 10 Solo Tech Test
 
 ## Index
